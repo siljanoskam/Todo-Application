@@ -1,0 +1,50 @@
+<html>
+
+    <head></head>
+    
+    <body>
+       
+        
+        <h2 class="page-header">Your Todos</h2>
+        
+        <ul class="list-group">
+        
+            {{#each items}}
+            
+                      <li class="list-group-item">  
+                          
+                          {{#if isDone}}
+                          
+                            <label><strike>{{todo}}</strike></label>
+                          
+                          {{else}} 
+                          
+                            <label>{{todo}}</label> 
+                          
+                          {{/if}}
+                          
+                              <form class="pull-right" action="/users/todos" method="POST">
+
+                                <input type="hidden" name="id" value="{{id}}">
+                                  
+                                <a class="btn btn-primary btn-xs" href="/users/todo/{{id}}">Edit</a>
+
+                                <button class="btn btn-danger btn-xs" type="submit">Delete</button>    
+
+                              </form>                               
+
+                      </li>
+            
+            {{else}}
+            
+                <p>You haven't added any todos yet.</p>
+
+            {{/each}}
+            
+        </ul>
+        
+        <a class="btn btn-success" href="/users/addTodo">Add new Todo</a>
+        
+    </body>
+
+</html>
